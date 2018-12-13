@@ -11,4 +11,10 @@ when 'debian'
     key node[id]['repository']['signing_key']
     action :add
   end
+when 'rhel', 'amazon'
+  yum_repository 'nginx-amplify' do
+    baseurl node[id]['repository']['uri']
+    gpgkey node[id]['repository']['signing_key']
+    action :create
+  end
 end
