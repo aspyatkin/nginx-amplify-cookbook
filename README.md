@@ -2,16 +2,17 @@
 [![license](https://img.shields.io/github/license/aspyatkin/nginx-amplify-cookbook.svg?style=flat-square)]()  
 Chef cookbook to install [Nginx Amplify](https://www.nginx.com/products/nginx-amplify/).
 
-## Recipes
+## Resources
 
-### nginx-amplify::default
+### nginx_amplify_agent
 
-Install or *upgrade* (default action) Nginx Amplify (it depends on `node['nginx-amplify']['upgrade']` attribute, which defaults to `false`) and configure agent application.
-
-## Testing
-Run `script/bootstrap` to install necessary Ruby Gems.
-
-Run `script/test` to perform [KitchenCI](http://kitchen.ci/) tests.
+```ruby
+nginx_amplify_agent 'default' do
+  api_key '...TOP SECRET...'
+  stub_status 'http://127.0.0.1:8099/nginx_status'
+  action :setup
+end
+```
 
 ## License
 MIT @ [Alexander Pyatkin](https://github.com/aspyatkin)
